@@ -2,13 +2,12 @@ package tests;
 
 import base.BaseTest;
 import com.relevantcodes.extentreports.LogStatus;
-import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.CommonPage;
-import pages.HomePage;
 import pages.UserMgtPage;
 
 import java.lang.reflect.Method;
@@ -45,5 +44,12 @@ public class UserMgtPageTest extends BaseTest {
             extentTest.log(LogStatus.PASS, commonPage.findById(field).getAttribute("name") + " - was displayed");
         }
         screenshot.takeScreenshotAndLog();
+    }
+
+    @Test(description = "Verifying table has no data initially", expectedExceptions = NoSuchElementException.class)
+    public void verifyTableContentIsZero(){
+        extentTest.log(LogStatus.PASS, " Table was Empty");
+        screenshot.takeScreenshotAndLog();
+        userMgtPage.tableRow.isDisplayed();
     }
 }
