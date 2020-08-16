@@ -7,17 +7,24 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class HomePage extends BasePage {
+public class UserMgtPage extends BasePage {
     WebDriver driver;
 
-    public HomePage(WebDriver driver){
+    public UserMgtPage(WebDriver driver){
         super(driver);
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public String[] navButtons = {"Home", "Inputs", "Selectors", "Select-class", "Alert", "Pop-Up", "Multiple-window",
-            "Tables", "Calendar", "iFrames", "Action-class","JS-Executor","Synchronization", "Files", "User-Mgt"};
+    @FindBy(id = "login-btn")
+    public WebElement loginBtn;
+
+    @FindBy(id = "access-db-btn")
+    public WebElement accessDbBtn;
+
+    public String[] registrationFormFields = {"Firstname","Lastname","Email","Phonenumber","Select-role"};
+
+
 
 
 }
